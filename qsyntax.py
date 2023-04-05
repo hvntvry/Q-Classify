@@ -11,8 +11,7 @@ def qsyntax(dataset, file_path):
     #VIEW 
     blocks = [
         {"view_id": "html"},         
-        {"view_id": "classification", "html": None, "text":None},
-        {"view_id": "choice", "html": None, "text":None, "label":None}, 
+        {"view_id": "choice", "html": None, "text":None}, 
         {"view_id": "text_input", "field_rows": 2, "field_label": 'Write any comments you might have'}]
 
     #STREAM
@@ -31,16 +30,11 @@ def qsyntax(dataset, file_path):
     }
 
 def add_options(stream):
-    options1 = "prefaced"
-    
     options2 = [
-        {"text": "Topic Extension", "id": "extension"}, 
-        {"text": "Topical Shift", "id": "shift"},
-        {"text": "Reformulation", "id": "reformulation"}, 
-        {"text": "Challenge", "id": "challenge"},
+        {"text": "Prefaced", "id": "prefaced"}, 
+        {"text": "Non-Prefaced", "id": "nonprefaced"},
         {"text": "Other", "id": "other"}
     ]
     for task in stream:
-        task["label"] = options1
         task["options"] = options2
         yield task
